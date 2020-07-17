@@ -23,7 +23,3 @@
 <h3>Step 5: Run App</h3>
 
         python app.py
-
-
-<h5>Thank you to Shane Larson of https://www.grizzlypeaksoftware.com/ whose <br>
-repo and permission, lent us guidance on the charting portion of the UI.</h5>
