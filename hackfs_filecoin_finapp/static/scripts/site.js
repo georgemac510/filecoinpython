@@ -1,5 +1,7 @@
 var Site = function(){
-	this.symbol = "MSFT"
+	this.symbol = "MSFT";
+};
+
 Site.prototype.Init = function(){
 	this.GetQuote();
 	$("#symbol").on("click", function(){

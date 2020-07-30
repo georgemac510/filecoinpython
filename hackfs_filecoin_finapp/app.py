@@ -1,16 +1,15 @@
-
 from flask import Flask, request, render_template
 import yfinance as yf
 
-# find Flask app.
+# instantiate the Flask app.
 app = Flask(__name__)
 
 # API Route for pulling the stock quote
 @app.route("/quote")
 def display_quote():
-
-	# default to MSFT
-	symbol = request.args.get('symbol', default="MSFT")
+	# get a stock ticker symbol from the query string
+	# default to AAPL
+	symbol = request.args.get('symbol', default="AAPL")
 
 	# pull the stock quote
 	quote = yf.Ticker(symbol)
@@ -18,28 +17,29 @@ def display_quote():
 	#return the object via the HTTP Response
 	return quote.info
 
-# API hookup to access fin data
+# API route for pulling the stock history
 @app.route("/history")
 def display_history():
 	#get the query string parameters
-	symbol = request.args.get('symbol', default="MSFT")
-	period = request.args.get('period', default="2y")
+	symbol = request.args.get('symbol', default="AAPL")
+	period = request.args.get('period', default="5y")
 	interval = request.args.get('interval', default="1wk")
 
+	#pull the quote
 	quote = yf.Ticker(symbol)
-	# retrieve ticker symbol data from Yahoo finance
+	#use the quote to pull the historical data from Yahoo finance
 	hist = quote.history(period=period, interval=interval)
-    # convert data to JSON
+	#convert the historical data to JSON
 	data = hist.to_json()
-
+	#return the JSON in the HTTP response
 	return data
 
-# Route to main page
+# This is the / route, or the main landing page route.
 @app.route("/")
 def home():
-	# Flask renders website template
-    return render_template("home.html")
+	# we will use Flask's render_template method to render a website template.
+    return render_template("homepage.html")
 
-# start the flask app.
+# run the flask app.
 if __name__ == "__main__":
 	app.run(debug=True)
