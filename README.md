@@ -6,4 +6,4 @@ Fin-File is a Python Flask app that allows the user to generate a 5-year weekly 
 
 This would be a wonderful tool for the investment community as they would be able access our financial data store and save documents that are critical in conducting technical and fundamental analysis that will help them in making sound investment decisions. The app could be used by individual investors as well as professional money managers.
 
-<h2>Go to the <h3>hackfs_filecoin_finapp</h3>directory for directions on how to get the app started.</h2> 
+<h3>Go to the hackfs_filecoin_finapp directory for directions on how to get the app started.</h3> 
